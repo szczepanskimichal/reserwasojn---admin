@@ -1,7 +1,9 @@
 import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
-import { FaFacebookSquare, FaApple } from "react-icons/fa";
+
 import { FcGoogle } from "react-icons/fc";
+import Nav from "./Nav";
+import MobileNav from "./MobileNav";
 
 export default function Layout({ children }) {
   const { data: session } = useSession();
@@ -31,6 +33,19 @@ export default function Layout({ children }) {
       </div>
     );
   } else {
-    return <div>Logged in </div>;
+    // return <div>Logged in {session.user.email}</div>;
+    return (
+      <div className="relative">
+        <div className="bg-gray-200 flex min-h-screen">
+          <Nav />
+          <div className="bg-gray-50 shadow-xl flex-grow sm:m-5 ml-0 sm:rounded-lg p-3">
+            {children}
+          </div>
+        </div>
+        <div className="sm:hidden absolute top-0 right-0 h-screen">
+          <MobileNav />
+        </div>
+      </div>
+    );
   }
 }
