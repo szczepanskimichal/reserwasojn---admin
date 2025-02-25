@@ -1,6 +1,6 @@
 import NextAuth, { getServerSession } from "next-auth";
-// import clientPromise from "@/lib/mongodb";
-// import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "@/lib/mongodb";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import AppleProvider from "next-auth/providers/apple";
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
@@ -21,6 +21,6 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-  // adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise), // tutaj lacze autentykacje z moim mongodb!!!
 };
 export default NextAuth(authOptions);
