@@ -31,6 +31,6 @@ export default function Layout({ children }) {
       </div>
     );
   } else {
-    <div>Logged in</div>;
+    <div>Logged in </div>;
   }
 }
